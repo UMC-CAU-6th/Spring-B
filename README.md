@@ -1,2 +1,2 @@
 # Spring-B
-Spring B팀
+Spring B팀 ^^
