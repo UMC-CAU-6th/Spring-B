@@ -33,11 +33,4 @@ public class Review extends BaseEntity {
     @JoinColumn(name="store_id")
     private Store store;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="parent_id")
-    private Review parentReview;
-
-    @OneToMany(mappedBy = "parentReview",cascade = CascadeType.ALL)
-    private List<Review> childReviewList=new ArrayList<>();
-
 }
