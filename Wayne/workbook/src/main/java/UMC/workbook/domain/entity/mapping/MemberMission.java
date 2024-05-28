@@ -28,6 +28,7 @@ public class MemberMission extends BaseEntity {
     private Mission mission;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MissionStatus status;
 
     // created_at, updated_at in BaseEntity
