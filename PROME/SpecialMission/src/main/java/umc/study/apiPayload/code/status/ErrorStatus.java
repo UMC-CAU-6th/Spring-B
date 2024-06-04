@@ -20,7 +20,8 @@ public enum ErrorStatus implements BaseErrorCode {
     LOGIN_ERROR_NICKNAME(HttpStatus.BAD_REQUEST, "LOGIN4002", "중복된 닉네임입니다"),
 
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
-    ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다.");
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4001", "멤버가 없습니다."),
+    POST_NOT_FOUND(HttpStatus.NOT_FOUND, "POST4001", "포스트가 없습니다.");
 
 
     private final HttpStatus httpStatus;
