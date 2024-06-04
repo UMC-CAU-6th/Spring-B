@@ -1,8 +1,8 @@
-package umc.spring.domain;
+package umc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.common.BaseEntity;
+import umc.domain.common.BaseEntity;
 
 @Entity
 @Getter
