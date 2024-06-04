@@ -1,12 +1,8 @@
 package UMC.workbook.domain.entity;
 
 import UMC.workbook.domain.common.BaseEntity;
-import UMC.workbook.domain.entity.mapping.MemberPrefer;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
