@@ -12,7 +12,7 @@ import umc.workbook.service.TempService.TempQueryService;
 import umc.workbook.web.dto.TempResponseDTO;
 
 @RestController
-@RequestMapping("/temp")
+@RequestMapping("/temp") //공통 URL
 @RequiredArgsConstructor
 public class TempRestController {
 
