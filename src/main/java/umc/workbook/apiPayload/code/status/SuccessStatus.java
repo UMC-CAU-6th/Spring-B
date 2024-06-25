@@ -12,6 +12,9 @@ public enum SuccessStatus implements BaseCode {
 
     Temp_OK(HttpStatus.OK, "TEMP_1000", "성공입니다."),
 
+    // 멤버 관련 응답
+    Member_OK(HttpStatus.OK, "MEMBER_2000", "성공입니다."),
+
     // 프로젝트 관련 응답
     Project_OK(HttpStatus.OK, "PROJECT_2000", "성공입니다."),
 

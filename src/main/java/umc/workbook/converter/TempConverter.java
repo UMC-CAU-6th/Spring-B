@@ -1,6 +1,6 @@
 package umc.workbook.converter;
 
-import umc.workbook.web.dto.TempResponseDTO;
+import umc.workbook.web.dto.Temp.TempResponseDTO;
 
 public class TempConverter {
 

@@ -9,7 +9,7 @@ import umc.workbook.apiPayload.ApiResponse;
 import umc.workbook.apiPayload.code.status.SuccessStatus;
 import umc.workbook.converter.TempConverter;
 import umc.workbook.service.TempService.TempQueryService;
-import umc.workbook.web.dto.TempResponseDTO;
+import umc.workbook.web.dto.Temp.TempResponseDTO;
 
 @RestController
 @RequestMapping("/temp") //공통 URL
