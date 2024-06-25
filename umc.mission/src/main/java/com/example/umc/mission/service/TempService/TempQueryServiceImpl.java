@@ -1,13 +1,14 @@
-package com.example.umc.mission.service;
+package com.example.umc.mission.service.TempService;
 
 import com.example.umc.mission.apiPayload.code.status.ErrorStatus;
 import com.example.umc.mission.apiPayload.exception.handler.TempHandler;
+import com.example.umc.mission.service.TempService.TempQueryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TempQueryServiceImpl implements TempQueryService{
+public class TempQueryServiceImpl implements TempQueryService {
 
     @Override
     public void CheckFlag(Integer flag){
