@@ -6,6 +6,7 @@ import com.example.umc.mission.domain.Member;
 import com.example.umc.mission.service.MemberService.MemberCommandService;
 import com.example.umc.mission.web.dto.MemberRequestDTO;
 import com.example.umc.mission.web.dto.MemberResponseDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class MemberRestController {
     private final MemberCommandService memberCommandService;
 
     @PostMapping("/")
-    public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody MemberRequestDTO.JoinDTO request) {
+    public ApiResponse<MemberResponseDTO.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDTO request) {
         Member member = memberCommandService.joinMember(request);
         return ApiResponse.onSucccess(MemberConverter.toJoinResultDTO(member));
     }
