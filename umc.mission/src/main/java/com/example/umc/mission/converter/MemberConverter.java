@@ -2,8 +2,8 @@ package com.example.umc.mission.converter;
 
 import com.example.umc.mission.domain.Member;
 import com.example.umc.mission.domain.enums.Gender;
-import com.example.umc.mission.web.dto.MemberRequestDTO;
-import com.example.umc.mission.web.dto.MemberResponseDTO;
+import com.example.umc.mission.web.dto.request.MemberRequestDTO;
+import com.example.umc.mission.web.dto.response.MemberResponseDTO;
 
 import java.util.ArrayList;
 

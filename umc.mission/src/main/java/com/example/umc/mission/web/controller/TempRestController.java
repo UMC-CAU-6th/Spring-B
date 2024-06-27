@@ -3,7 +3,7 @@ package com.example.umc.mission.web.controller;
 import com.example.umc.mission.apiPayload.ApiResponse;
 import com.example.umc.mission.converter.TempConverter;
 import com.example.umc.mission.service.TempService.TempQueryService;
-import com.example.umc.mission.web.dto.TempResponse;
+import com.example.umc.mission.web.dto.response.TempResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

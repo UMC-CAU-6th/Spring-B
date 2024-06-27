@@ -9,7 +9,7 @@ import com.example.umc.mission.domain.Member;
 import com.example.umc.mission.domain.mapping.PreferrenceofFood;
 import com.example.umc.mission.repository.FoodCategoryRepository;
 import com.example.umc.mission.repository.MemberRepository;
-import com.example.umc.mission.web.dto.MemberRequestDTO;
+import com.example.umc.mission.web.dto.request.MemberRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

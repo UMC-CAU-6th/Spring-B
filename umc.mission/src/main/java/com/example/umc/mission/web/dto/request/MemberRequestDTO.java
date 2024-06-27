@@ -1,4 +1,4 @@
-package com.example.umc.mission.web.dto;
+package com.example.umc.mission.web.dto.request;
 
 import com.example.umc.mission.validation.annotation.ExistCategories;
 import jakarta.validation.constraints.NotBlank;

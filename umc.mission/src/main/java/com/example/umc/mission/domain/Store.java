@@ -1,42 +1,42 @@
 package com.example.umc.mission.domain;
 
-import com.example.umc.mission.domain.enums.MissionStatus;
-import com.example.umc.mission.domain.mapping.MembersMission;
 import com.example.umc.mission.domain.mapping.StoresMission;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.catalina.LifecycleState;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Mission {
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String name;
 
     @Column(nullable = false, length = 50)
-    private String condition;
+    private String address;
 
-    @Column(nullable = false)
-    private Integer reward;
+    @Column(nullable = false, length = 15)
+    private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
 
-    @OneToMany(mappedBy = "mission")
-    private List<MembersMission> membersMissionList = new ArrayList<>();
+    //review 리스트
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Review> reviewList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "mission")
+    //mission 리스트
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<StoresMission> storesMissionList = new ArrayList<>();
-
 }
