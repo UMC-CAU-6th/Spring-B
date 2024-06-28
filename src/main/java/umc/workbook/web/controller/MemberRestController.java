@@ -27,3 +27,4 @@ public class MemberRestController {
         return ApiResponse.onSuccess(SuccessStatus.Member_OK, MemberConverter.toJoinResultDTO(member));
     }
 }
+
