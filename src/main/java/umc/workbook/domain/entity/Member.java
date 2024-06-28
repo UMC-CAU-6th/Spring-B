@@ -2,6 +2,9 @@ package umc.workbook.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.workbook.domain.common.BaseEntity;
 import umc.workbook.domain.entity.mapping.MemberAgree;
 import umc.workbook.domain.entity.mapping.MemberMission;
@@ -16,6 +19,8 @@ import java.util.List;
 
 @Entity  // 해당 class는 JPA의 entity임을 명시
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -51,6 +56,7 @@ public class Member extends BaseEntity {
                                               // 여기서는 소셜 로그인 일단은 없기 때문에 이메일은 nullable로 바꾸고 진행
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
@@ -64,4 +70,5 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
+    // minor changes
 }
