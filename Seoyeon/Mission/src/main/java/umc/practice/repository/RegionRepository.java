@@ -5,4 +5,5 @@ import umc.practice.domain.Region;
 
 public interface RegionRepository extends JpaRepository<Region,Long> {
     public Region findByRegionName(String regionName);
+    public Boolean existsByRegionName(String regionName);
 }
