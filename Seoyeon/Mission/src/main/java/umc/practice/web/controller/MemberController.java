@@ -15,7 +15,7 @@ import umc.practice.web.dto.MemberResponseDto;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/members")
+@RequestMapping("/users")
 public class MemberController {
 
     public final MemberCommandService memberCommandService;
