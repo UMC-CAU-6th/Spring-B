@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import umc.practice.validation.annotation.ExistMember;
+import umc.practice.validation.annotation.ExistStore;
 
 public class ReviewRequestDto {
     @Getter
@@ -18,6 +19,7 @@ public class ReviewRequestDto {
         @ExistMember
         private Long writerId;
         @NotNull
+        @ExistStore
         private Long storeId;
     }
 }
