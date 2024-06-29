@@ -5,8 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.practice.domain.common.BaseEntity;
 import umc.practice.domain.enums.Gender;
+import umc.practice.domain.enums.MemberStatus;
 import umc.practice.domain.mapping.MemberFoodPrefer;
 import umc.practice.domain.mapping.MemberMission;
 
@@ -19,6 +23,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Member extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -26,10 +32,7 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String nickname;
-
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String password;
 
     @Column(columnDefinition = "VARCHAR(10)")
@@ -41,9 +44,14 @@ public class Member extends BaseEntity {
     @Column
     private String address;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
+    private MemberStatus status;
+
+    @ColumnDefault("0")
     private long points;
 
     private LocalDate inactivateDate;
