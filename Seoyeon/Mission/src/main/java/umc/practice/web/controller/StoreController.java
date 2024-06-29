@@ -19,7 +19,7 @@ import umc.practice.web.dto.StoreResponseDto;
 public class StoreController {
     private final StoreCommandService storeCommandService;
 
-    @PostMapping("/add")
+    @PostMapping
     public ApiResponse<StoreResponseDto.addStoreResponseDto> addStore(@RequestBody @Valid  StoreRequestDto.AddStoreRequestDto request){
         Store store=storeCommandService.addStore(request);
         return ApiResponse.onSuccess(StoreConverter.toStoreResponseDto(store));
