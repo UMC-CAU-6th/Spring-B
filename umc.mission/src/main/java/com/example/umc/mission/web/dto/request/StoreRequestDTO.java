@@ -1,8 +1,8 @@
 package com.example.umc.mission.web.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import com.example.umc.mission.validation.annotation.ExistMember;
+import com.example.umc.mission.validation.annotation.ExistStore;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 
 public class StoreRequestDTO {
@@ -23,10 +23,16 @@ public class StoreRequestDTO {
 
     @Getter
     public static class postReviewDTO{
+        @NotBlank
         String title;
+        @NotNull
         String content;
-        String userId;
-
-
+        @Min(0)
+        @Max(5)
+        Integer starPoint;
+        @ExistMember
+        Long userId;
+        @ExistStore
+        Long storeId;
     }
 }

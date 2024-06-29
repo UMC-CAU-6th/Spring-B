@@ -22,6 +22,7 @@ public class StoreResponseDTO {
     @AllArgsConstructor
     public static class reviewResponseDTO{
         Long store_id;
+        Long member_id;
         Long review_id;
     }
 
