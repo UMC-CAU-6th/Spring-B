@@ -1,8 +1,6 @@
 package umc.practice.web.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import umc.practice.validation.annotation.ExistMember;
 import umc.practice.validation.annotation.ExistStore;
@@ -11,6 +9,7 @@ public class ReviewRequestDto {
     @Getter
     public static class WriteReviewRequestDto {
         @NotNull
+        @Max(5)@Min(1)
         private int stars;
         @NotBlank
         @Size(max=200)
