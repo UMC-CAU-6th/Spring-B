@@ -34,10 +34,18 @@ public class Review extends BaseEntity {
     private Store store;
 
     public void setWriter(Member writer) {
+        if(writer!=null)
+            writer.getReviewList().remove(this);
         this.writer = writer;
+        if(writer!=null)
+            writer.getReviewList().add(this);
     }
     public void setStore(Store store) {
+        if(store!=null)
+            store.getReviewList().remove(this);
         this.store = store;
+        if(store!=null)
+            store.getReviewList().add(this);
     }
 
 }
