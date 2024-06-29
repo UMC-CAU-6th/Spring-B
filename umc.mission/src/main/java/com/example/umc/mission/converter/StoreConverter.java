@@ -1,6 +1,7 @@
 package com.example.umc.mission.converter;
 
 import com.example.umc.mission.domain.Region;
+import com.example.umc.mission.domain.Review;
 import com.example.umc.mission.domain.Store;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
 import com.example.umc.mission.web.dto.response.StoreResponseDTO;

@@ -1,10 +1,12 @@
 package com.example.umc.mission.web.controller;
 
 import com.example.umc.mission.apiPayload.ApiResponse;
+import com.example.umc.mission.converter.ReviewConverter;
 import com.example.umc.mission.converter.StoreConverter;
+import com.example.umc.mission.domain.Review;
 import com.example.umc.mission.domain.Store;
+import com.example.umc.mission.service.ReviewService.ReviewCommandService;
 import com.example.umc.mission.service.StoreService.StoreCommandService;
-import com.example.umc.mission.service.StoreService.StoreCommandServiceImpl;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
 import com.example.umc.mission.web.dto.response.StoreResponseDTO;
 import jakarta.validation.Valid;
@@ -18,6 +20,8 @@ public class StoreRestController {
 
     private final StoreCommandService storeCommandService;
 
+    private final ReviewCommandService reviewCommandService;
+
     //1) 특정 지역에 가게 추가하기
     @PostMapping("/")
     public ApiResponse<StoreResponseDTO.addStoreResponseDTO> addStore(@RequestBody @Valid StoreRequestDTO.addStoreDTO request){
@@ -28,7 +32,8 @@ public class StoreRestController {
     //2) 가게에 리뷰 추가하기
     @PostMapping("/review")
     public ApiResponse<StoreResponseDTO.reviewResponseDTO> postReview(@RequestBody @Valid StoreRequestDTO.postReviewDTO request){
-        return null;
+        Review review = reviewCommandService.saveReview(request);
+        return ApiResponse.onSucccess(ReviewConverter.toReviewResponseDTO(review));
     }
 
     //3) 가게에 미션 추가하기
