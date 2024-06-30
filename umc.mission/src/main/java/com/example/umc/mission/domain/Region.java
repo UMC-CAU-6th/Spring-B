@@ -21,8 +21,5 @@ public class Region {
     private String name;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
-    private List<Mission> missionList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
     private List<Store> StoreList = new ArrayList<>();
 }

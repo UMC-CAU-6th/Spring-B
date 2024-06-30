@@ -1,9 +1,7 @@
 package com.example.umc.mission.domain;
 
-import com.example.umc.mission.domain.mapping.StoresMission;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.LifecycleState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +36,5 @@ public class Store {
 
     //mission 리스트
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
-    private List<StoresMission> storesMissionList = new ArrayList<>();
+    private List<Mission> missionList = new ArrayList<>();
 }
