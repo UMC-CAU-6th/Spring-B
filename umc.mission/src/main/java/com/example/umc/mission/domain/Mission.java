@@ -43,4 +43,8 @@ public class Mission {
     @OneToMany(mappedBy = "mission")
     private List<MembersMission> membersMissionList = new ArrayList<>();
 
+    public void changeStatusToChallenging(){
+        this.status=MissionStatus.CHALLENGING;
+    }
+
 }

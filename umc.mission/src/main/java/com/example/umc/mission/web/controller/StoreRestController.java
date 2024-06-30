@@ -10,17 +10,19 @@ import com.example.umc.mission.domain.Store;
 import com.example.umc.mission.service.MissionService.MissionCommandService;
 import com.example.umc.mission.service.ReviewService.ReviewCommandService;
 import com.example.umc.mission.service.StoreService.StoreCommandService;
+import com.example.umc.mission.validation.annotation.CheckMissionStatus;
 import com.example.umc.mission.web.dto.request.MissionRequestDTO;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
 import com.example.umc.mission.web.dto.response.MissionResponseDTO;
 import com.example.umc.mission.web.dto.response.StoreResponseDTO;
-import io.swagger.annotations.Api;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@Validated
 @RequestMapping("/store")
 public class StoreRestController {
 
@@ -52,5 +54,9 @@ public class StoreRestController {
     }
 
     //4) 가게의 미션을 도전 중인 미션에 추가
-    //storesmissin의 status 칼럼 enum 값 변경
+    @PutMapping("/challenge/{missionId}")
+    public ApiResponse<MissionResponseDTO.updateMissionResponseDTO> challengeMission(@CheckMissionStatus @PathVariable Long missionId){
+        Mission changedMission = missionCommandService.changeStatusOfMission(missionId);
+        return ApiResponse.onSucccess(MissionConverter.toUpdateMissionResponseDTO(changedMission));
+    }
 }
