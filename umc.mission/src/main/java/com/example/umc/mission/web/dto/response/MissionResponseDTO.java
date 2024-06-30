@@ -1,6 +1,7 @@
 package com.example.umc.mission.web.dto.response;
 
 
+import com.example.umc.mission.domain.enums.MissionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,5 +16,14 @@ public class MissionResponseDTO {
     public static class addMissionResponseDTO {
         Long mission_id;
         Long store_id;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class updateMissionResponseDTO {
+        Long mission_id;
+        MissionStatus status;
     }
 }
