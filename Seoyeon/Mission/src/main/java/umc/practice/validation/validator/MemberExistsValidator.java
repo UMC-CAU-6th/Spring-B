@@ -6,12 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.practice.apiPayload.code.status.ErrorStatus;
 import umc.practice.repository.MemberRepository;
+import umc.practice.service.MemberQueryService;
 import umc.practice.validation.annotation.ExistMember;
 
 @Component
 @RequiredArgsConstructor
 public class MemberExistsValidator implements ConstraintValidator<ExistMember,Long> {
-    private final MemberRepository memberRepository;
+    private final MemberQueryService memberQueryService;
     @Override
     public void initialize(ExistMember constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
@@ -19,7 +20,7 @@ public class MemberExistsValidator implements ConstraintValidator<ExistMember,Lo
 
     @Override
     public boolean isValid(Long id, ConstraintValidatorContext context) {
-        boolean isValid= memberRepository.existsById(id);
+        boolean isValid= memberQueryService.existById(id);
         if(!isValid){
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.MEMBER_NOT_FOUND.getMessage()).addConstraintViolation();
