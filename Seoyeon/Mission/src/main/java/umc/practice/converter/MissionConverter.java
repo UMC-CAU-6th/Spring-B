@@ -11,8 +11,8 @@ public class MissionConverter {
         return Mission.builder()
                 .reward(requestDto.getReward())
                 .minimumPrice(requestDto.getMinimumPrice())
-                .startDate(requestDto.getStartDate())
-                .endDate(requestDto.getEndDate())
+                .startDate(requestDto.getDateRange().getStartDate())
+                .endDate(requestDto.getDateRange().getEndDate())
                 .build();
     }
     public static MissionResponseDto.AddMissionResponseDto toMissionResponseDto(Mission mission){
