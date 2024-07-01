@@ -32,4 +32,9 @@ public class MemberMission extends BaseEntity {
     private MissionStatus status;
 
     // created_at, updated_at in BaseEntity
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+    }
+
 }
