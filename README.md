@@ -1,2 +1,2 @@
 # Spring-B Wayne
-wookbook Mission 9_#3 가게에 리뷰 추가하기 API
+workbook Mission 9_실습_#1 회원가입 API
