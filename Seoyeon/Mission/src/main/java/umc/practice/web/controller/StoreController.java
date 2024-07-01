@@ -17,6 +17,7 @@ import umc.practice.domain.Review;
 import umc.practice.domain.Store;
 import umc.practice.service.StoreCommandService;
 import umc.practice.service.StoreQueryService;
+import umc.practice.validation.annotation.CheckPage;
 import umc.practice.validation.annotation.ExistStore;
 import umc.practice.web.dto.StoreRequestDto;
 import umc.practice.web.dto.StoreResponseDto;
@@ -54,7 +55,7 @@ public class StoreController {
     })
     public ApiResponse<StoreResponseDto.ReviewPreviewListDto> getReviewList(
             @ExistStore @PathVariable(name="storeId") Long storeId,
-            @RequestParam(name="page") int page){
+            @CheckPage @RequestParam(name="page") int page){
         Page<Review> reviewPage=storeQueryService.getReviewList(storeId,page);
 
         return ApiResponse.onSuccess(ReviewConverter.toReviewListDto(reviewPage));
