@@ -20,7 +20,7 @@ public class MemberMission extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'IN_PROGRESS'")
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'CHALLENGING'")
     @Enumerated(EnumType.STRING)
     private MissionStatus status;
 

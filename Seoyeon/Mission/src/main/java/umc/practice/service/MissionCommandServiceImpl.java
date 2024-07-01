@@ -35,11 +35,11 @@ public class MissionCommandServiceImpl implements MissionCommandService{
 
     @Override
     public MemberMission doMission(MissionRequestDto.DoMissionRequestDto requestDto) {
-        Member member=memberRepository.findById(requestDto.getMemberId()).get();
-        Mission mission=missionRepository.findById(requestDto.getMissionId()).get();
+        Member member=memberRepository.findById(requestDto.getMemberMission().getMemberId()).get();
+        Mission mission=missionRepository.findById(requestDto.getMemberMission().getMissionId()).get();
 
-        if(memberMissionRepository.existsByMissionAndMember(mission,member))    //이미 도전중이거나 완료한 미션인지 검증
-            throw new MissionHandler(ErrorStatus.MEMBER_MISSION_DUPLICATED);
+//        if(memberMissionRepository.existsByMissionAndMember(mission,member))    //이미 도전중이거나 완료한 미션인지 검증
+//            throw new MissionHandler(ErrorStatus.MEMBER_MISSION_DUPLICATED);
 
         MemberMission memberMission=MissionConverter.toMemberMission();  //memberMission 객체 생성
 
@@ -51,4 +51,10 @@ public class MissionCommandServiceImpl implements MissionCommandService{
         return memberMissionRepository.save(memberMission);
         //return memberMission;
     }
+
+    @Override
+    public boolean checkMissionChallenging(Long missionId, Long memberId) {
+        return memberMissionRepository.existsByMissionIdAndMemberId(missionId,memberId);
+    }
+
 }

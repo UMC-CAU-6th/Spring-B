@@ -12,6 +12,7 @@ import umc.practice.converter.MissionConverter;
 import umc.practice.domain.Mission;
 import umc.practice.domain.mapping.MemberMission;
 import umc.practice.service.MissionCommandService;
+import umc.practice.validation.annotation.ExistsMemberMission;
 import umc.practice.web.dto.MissionRequestDto;
 import umc.practice.web.dto.MissionResponseDto;
 
@@ -30,7 +31,7 @@ public class MissionController {
     }
 
     @PostMapping("/member")
-    public ApiResponse<MissionResponseDto.DoMemberMissionResponseDto> doMission(@RequestBody @Valid MissionRequestDto.DoMissionRequestDto requestDto){
+    public ApiResponse<MissionResponseDto.DoMissionResponseDto> doMission(@RequestBody @Valid MissionRequestDto.DoMissionRequestDto requestDto){
         MemberMission memberMission=missionCommandService.doMission(requestDto);
         return ApiResponse.onSuccess(MissionConverter.toDoMemberMissionDto(memberMission));
     }

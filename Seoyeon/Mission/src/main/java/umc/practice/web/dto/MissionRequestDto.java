@@ -6,10 +6,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
-import umc.practice.validation.annotation.ExistMember;
-import umc.practice.validation.annotation.ExistMission;
-import umc.practice.validation.annotation.ExistStore;
-import umc.practice.validation.annotation.ValidMissionDate;
+import umc.practice.validation.annotation.*;
 
 import java.time.LocalDate;
 
@@ -40,6 +37,19 @@ public class MissionRequestDto {
     }
     @Getter
     public static class DoMissionRequestDto{
+//        @ExistMember
+//        @NotNull
+//        private Long memberId;
+//        @ExistMission
+//        @NotNull
+//        private Long missionId;
+        @NotNull
+        @Valid
+        @ExistsMemberMission
+        private MemberMissionDto memberMission;
+    }
+    @Getter
+    public static class MemberMissionDto{
         @ExistMember
         @NotNull
         private Long memberId;

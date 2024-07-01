@@ -26,8 +26,8 @@ public class MissionConverter {
                 .status(MissionStatus.CHALLENGING)
                 .build();
     }
-    public static MissionResponseDto.DoMemberMissionResponseDto toDoMemberMissionDto(MemberMission memberMission){
-        return MissionResponseDto.DoMemberMissionResponseDto.builder()
+    public static MissionResponseDto.DoMissionResponseDto toDoMemberMissionDto(MemberMission memberMission){
+        return MissionResponseDto.DoMissionResponseDto.builder()
                 .missionId(memberMission.getMission().getId())
                 .id(memberMission.getId())
                 .createdAt(memberMission.getCreatedAt())

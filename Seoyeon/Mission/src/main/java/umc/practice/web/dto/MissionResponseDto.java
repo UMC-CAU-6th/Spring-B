@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class MissionResponseDto {
@@ -22,7 +21,7 @@ public class MissionResponseDto {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class DoMemberMissionResponseDto {
+    public static class DoMissionResponseDto {
         @NotNull
         private Long id;
         @NotNull
