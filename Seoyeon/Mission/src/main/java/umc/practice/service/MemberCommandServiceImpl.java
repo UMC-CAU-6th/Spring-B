@@ -4,8 +4,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import umc.practice.apiPayload.code.exception.handler.FoodCategoryHandler;
-import umc.practice.apiPayload.code.status.ErrorStatus;
 import umc.practice.converter.MemberConverter;
 import umc.practice.converter.MemberFoodPreferConverter;
 import umc.practice.domain.FoodCategory;

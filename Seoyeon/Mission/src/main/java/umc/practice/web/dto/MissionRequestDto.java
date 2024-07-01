@@ -6,6 +6,8 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
+import umc.practice.validation.annotation.ExistMember;
+import umc.practice.validation.annotation.ExistMission;
 import umc.practice.validation.annotation.ExistStore;
 import umc.practice.validation.annotation.ValidMissionDate;
 
@@ -35,5 +37,14 @@ public class MissionRequestDto {
         @NotNull
         @FutureOrPresent(message = "지난 날짜는 지정이 불가능합니다")
         private LocalDate endDate;
+    }
+    @Getter
+    public static class DoMissionRequestDto{
+        @ExistMember
+        @NotNull
+        private Long memberId;
+        @ExistMission
+        @NotNull
+        private Long missionId;
     }
 }

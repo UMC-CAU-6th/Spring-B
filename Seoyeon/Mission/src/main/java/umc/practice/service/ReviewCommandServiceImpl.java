@@ -1,5 +1,6 @@
 package umc.practice.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import umc.practice.converter.ReviewConverter;
@@ -14,6 +15,7 @@ import umc.practice.web.dto.ReviewResponseDto;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReviewCommandServiceImpl implements ReviewCommandService{
     private final ReviewRepository reviewRepository;
     private final MemberRepository memberRepository;

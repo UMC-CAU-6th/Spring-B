@@ -47,4 +47,5 @@ public class Mission extends BaseEntity {
         if(store!=null)
             store.getMissionList().add(this);
     }
+
 }

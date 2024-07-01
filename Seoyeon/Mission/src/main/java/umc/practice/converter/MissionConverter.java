@@ -1,10 +1,10 @@
 package umc.practice.converter;
 
 import umc.practice.domain.Mission;
+import umc.practice.domain.enums.MissionStatus;
+import umc.practice.domain.mapping.MemberMission;
 import umc.practice.web.dto.MissionRequestDto;
 import umc.practice.web.dto.MissionResponseDto;
-
-import java.time.LocalDate;
 
 public class MissionConverter {
     public static Mission toMission(MissionRequestDto.AddMissionRequestDto requestDto){
@@ -21,4 +21,17 @@ public class MissionConverter {
                 .createdAt(mission.getCreatedAt())
                 .build();
     }
+    public static MemberMission toMemberMission(){
+        return MemberMission.builder()
+                .status(MissionStatus.CHALLENGING)
+                .build();
+    }
+    public static MissionResponseDto.DoMemberMissionResponseDto toDoMemberMissionDto(MemberMission memberMission){
+        return MissionResponseDto.DoMemberMissionResponseDto.builder()
+                .missionId(memberMission.getMission().getId())
+                .id(memberMission.getId())
+                .createdAt(memberMission.getCreatedAt())
+                .build();
+    }
+
 }
