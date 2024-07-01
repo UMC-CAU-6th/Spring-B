@@ -2,6 +2,7 @@ package umc.workbook.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.workbook.domain.common.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,26 +12,46 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Review {
+public class Review extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long reviewId;
 
-    //private Long memberId;
+    @Column(columnDefinition = "TEXT")
+    private String review;
+
+    private Float score;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
-    //private Long storeId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 
-    private String body;
-
-    private Float score;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     private List<ReviewImage> reviewImageList = new ArrayList<>();
+
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+
+
+
+
+
+
+
+
 }
