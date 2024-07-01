@@ -13,7 +13,7 @@ public class FoodCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long foodCategoryId;
 
     @Column(nullable = false, length = 15)
     private String name;

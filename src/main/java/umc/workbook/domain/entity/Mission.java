@@ -18,7 +18,7 @@ public class Mission extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long missionId;
 
     private Integer reward;
 
@@ -34,6 +34,11 @@ public class Mission extends BaseEntity {
     private List<MemberMission> memberMissionList = new ArrayList<>();
 
     // created_at, updated_at은 BaseEntity에 있음 (extends BaseEntity)
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
 
 
 }

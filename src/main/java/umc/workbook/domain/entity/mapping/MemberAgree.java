@@ -15,7 +15,7 @@ public class MemberAgree extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long memberAgreeId;
 
     //private Long memberId;
     @ManyToOne(fetch = FetchType.LAZY)

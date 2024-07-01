@@ -1,6 +1,6 @@
 package umc.workbook.service.ReviewService;
 
-public class ReviewQueryServiceImpl {
+public class ReviewQueryServiceImpl implements ReviewQueryService{
 
 
 }

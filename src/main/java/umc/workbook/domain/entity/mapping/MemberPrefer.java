@@ -15,7 +15,7 @@ public class MemberPrefer extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long memberPreferId;
 
     //private Long memberId; //-> 연관 관계 매핑으로 변경
     @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩

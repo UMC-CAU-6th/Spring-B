@@ -29,7 +29,7 @@ public class Member extends BaseEntity {
 
     @Id   // 기본키 생성
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // JPA가 통신을 하는 DBMS의 방식을 따름
-    private Long id;
+    private Long memberId;
 
     @Column(nullable = false, length = 20)
     private String name;

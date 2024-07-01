@@ -12,7 +12,7 @@ public class MemberConverter {  // Member 객체를 만드는 작업 (클라이�
 
     public static MemberResponseDTO.JoinResultDTO toJoinResultDTO(Member member) {
         return MemberResponseDTO.JoinResultDTO.builder()
-                .memberId(member.getId())
+                .memberId(member.getMemberId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }
