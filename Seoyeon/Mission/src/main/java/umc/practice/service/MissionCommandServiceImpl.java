@@ -38,9 +38,6 @@ public class MissionCommandServiceImpl implements MissionCommandService{
         Member member=memberRepository.findById(requestDto.getMemberMission().getMemberId()).get();
         Mission mission=missionRepository.findById(requestDto.getMemberMission().getMissionId()).get();
 
-//        if(memberMissionRepository.existsByMissionAndMember(mission,member))    //이미 도전중이거나 완료한 미션인지 검증
-//            throw new MissionHandler(ErrorStatus.MEMBER_MISSION_DUPLICATED);
-
         MemberMission memberMission=MissionConverter.toMemberMission();  //memberMission 객체 생성
 
         memberMission.setMember(member);    //memberMission 객체에 member 설정하기

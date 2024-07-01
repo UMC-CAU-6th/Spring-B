@@ -37,12 +37,6 @@ public class MissionRequestDto {
     }
     @Getter
     public static class DoMissionRequestDto{
-//        @ExistMember
-//        @NotNull
-//        private Long memberId;
-//        @ExistMission
-//        @NotNull
-//        private Long missionId;
         @NotNull
         @Valid
         @ExistsMemberMission
