@@ -18,7 +18,7 @@ public class Store extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long storeId;
 
     //private Long regionId;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,7 +31,11 @@ public class Store extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String address;
 
-    private Float score;
+    //private Float score;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();

@@ -10,19 +10,19 @@ import umc.workbook.apiPayload.code.ReasonDTO;
 @AllArgsConstructor
 public enum SuccessStatus implements BaseCode {
 
-    Temp_OK(HttpStatus.OK, "TEMP_1000", "성공입니다."),
+    Temp_OK(HttpStatus.OK, "TEMP_0000", "성공입니다."),
 
     // 멤버 관련 응답
-    Member_OK(HttpStatus.OK, "MEMBER_2000", "성공입니다."),
+    Member_OK(HttpStatus.OK, "MEMBER_1000", "성공입니다."),
 
-    // 프로젝트 관련 응답
-    Project_OK(HttpStatus.OK, "PROJECT_2000", "성공입니다."),
+    // 가게 관련 응답
+    Store_OK(HttpStatus.OK, "STORE_2000", "성공입니다."),
 
-    // 이슈 관련 응답
-    Issue_OK(HttpStatus.OK, "ISSUE_3000", "성공입니다."),
+    // 리뷰 관련 응답
+    Review_OK(HttpStatus.OK, "REVIEW_3000", "성공입니다."),
 
-    // 코멘트 관련 응답
-    Comment_OK(HttpStatus.OK, "COMMENT_4000", "성공입니다.");
+    // 미션 관련 응답
+    Mission_OK(HttpStatus.OK, "MISSION_4000", "성공입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
