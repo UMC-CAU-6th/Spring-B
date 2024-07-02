@@ -69,7 +69,6 @@ public class StoreController {
     @GetMapping("/{storeId}/missions")
     @Operation(summary = "가게 미션 목록 조회", description = "특정 가게의 미션 목록을 조회합니다.")
     public ApiResponse<MissionResponseDTO.MissionPreviewListDTO> getMissionList(
-            //@ExistStore
             @PathVariable(name = "storeId") Long storeId,
             @RequestParam(name = "page") Integer page,
             @RequestParam(name = "size", defaultValue = "10") Integer size
