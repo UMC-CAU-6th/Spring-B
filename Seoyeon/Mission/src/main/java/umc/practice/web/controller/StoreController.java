@@ -18,6 +18,7 @@ import umc.practice.domain.Store;
 import umc.practice.service.StoreCommandService;
 import umc.practice.service.StoreQueryService;
 import umc.practice.validation.annotation.CheckPage;
+import umc.practice.validation.annotation.ExistMember;
 import umc.practice.validation.annotation.ExistStore;
 import umc.practice.web.dto.StoreRequestDto;
 import umc.practice.web.dto.StoreResponseDto;
@@ -58,6 +59,25 @@ public class StoreController {
             @CheckPage @RequestParam(name="page") int page){
         Page<Review> reviewPage=storeQueryService.getReviewList(storeId,page);
 
+        return ApiResponse.onSuccess(ReviewConverter.toReviewListDto(reviewPage));
+    }
+    @GetMapping("/members/{memberId}")
+    @Operation(summary = "내가 쓴 리뷰 목록 조회",description = "query string으로 page 번호를 주세요")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "memberId"),
+            @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지 입니다.")
+    })
+    public ApiResponse<StoreResponseDto.ReviewPreviewListDto> getMemberReviewList(
+            @PathVariable(name="memberId") @ExistMember Long memberId,
+            @RequestParam @CheckPage int page
+    ){
+        Page<Review> reviewPage=storeQueryService.getMemberReviewList(memberId,page);
         return ApiResponse.onSuccess(ReviewConverter.toReviewListDto(reviewPage));
     }
 }

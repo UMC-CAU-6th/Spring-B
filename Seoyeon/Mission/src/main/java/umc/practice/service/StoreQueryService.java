@@ -10,5 +10,5 @@ public interface StoreQueryService {
     public boolean existsById(Long id);
     public Optional<Store> findById(Long id);
     Page<Review> getReviewList(Long storeId, int page);
-
+    Page<Review> getMemberReviewList(Long memberId,int page);
 }
