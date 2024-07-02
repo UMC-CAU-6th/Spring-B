@@ -1,8 +1,8 @@
 package com.example.umc.mission.converter;
 
-import com.example.umc.mission.domain.Region;
-import com.example.umc.mission.domain.Review;
-import com.example.umc.mission.domain.Store;
+import com.example.umc.mission.domain.*;
+import com.example.umc.mission.domain.enums.MissionStatus;
+import com.example.umc.mission.domain.mapping.MembersMission;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
 import com.example.umc.mission.web.dto.response.StoreResponseDTO;
 
@@ -23,5 +23,21 @@ public class StoreConverter {
                 .region(region)
                 .build();
 
+    }
+
+    public static MembersMission toMembersMission(Member member, Mission mission){
+        return MembersMission.builder()
+                .member(member)
+                .mission(mission)
+                .status(MissionStatus.CHALLENGING)
+                .build();
+    }
+
+    public static StoreResponseDTO.ChallengeResponseDTO toChallengeResponseDTO(MembersMission challenge) {
+        return StoreResponseDTO.ChallengeResponseDTO.builder()
+                .challengeId(challenge.getId())
+                .missionId(challenge.getMission().getId())
+                .memberId(challenge.getMember().getId())
+                .build();
     }
 }

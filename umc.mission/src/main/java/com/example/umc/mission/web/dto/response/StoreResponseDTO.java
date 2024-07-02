@@ -75,4 +75,14 @@ public class StoreResponseDTO {
         Integer reward;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChallengeResponseDTO{
+        Long challengeId;
+        Long missionId;
+        Long memberId;
+    }
+
 }

@@ -17,13 +17,4 @@ public class MissionResponseDTO {
         Long mission_id;
         Long store_id;
     }
-
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class updateMissionResponseDTO {
-        Long mission_id;
-        MissionStatus status;
-    }
 }

@@ -36,13 +36,6 @@ public class MissionConverter {
                 .build();
     }
 
-    public static MissionResponseDTO.updateMissionResponseDTO toUpdateMissionResponseDTO(Mission mission) {
-        return MissionResponseDTO.updateMissionResponseDTO.builder()
-                .mission_id(mission.getId())
-                .status(mission.getStatus())
-                .build();
-    }
-
     public static MissionResponseDTO.addMissionResponseDTO toAddMissionResponseDTO(Mission mission) {
         return MissionResponseDTO.addMissionResponseDTO.builder()
                 .mission_id(mission.getId())
