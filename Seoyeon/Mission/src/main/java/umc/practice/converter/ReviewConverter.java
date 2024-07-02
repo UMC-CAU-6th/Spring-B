@@ -24,6 +24,7 @@ public class ReviewConverter {
         return StoreResponseDto.ReviewPreview.builder()
                 .writerName(review.getWriter().getName())
                 .stars(review.getStars())
+                .reviewId(review.getId())
                 .content(review.getContent())
                 .createdAt(review.getCreatedAt())
                 .build();

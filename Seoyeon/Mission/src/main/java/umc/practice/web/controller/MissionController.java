@@ -18,6 +18,7 @@ import umc.practice.domain.mapping.MemberMission;
 import umc.practice.service.MissionCommandService;
 import umc.practice.service.MissionQueryService;
 import umc.practice.validation.annotation.CheckPage;
+import umc.practice.validation.annotation.ExistMember;
 import umc.practice.validation.annotation.ExistStore;
 import umc.practice.validation.annotation.ExistsMemberMission;
 import umc.practice.web.dto.MissionRequestDto;
@@ -61,6 +62,25 @@ public class MissionController {
             @CheckPage @RequestParam(name="page") int page
     ){
         Page<Mission> missionPage=missionQueryService.getMissionList(storeId,page);
+        return ApiResponse.onSuccess(MissionConverter.toMissionListDto(missionPage));
+    }
+    @GetMapping("/member/{memberId}")
+    @Operation(summary = "특정 멤버가 진행중인 미션 목록 조회 api",description = "query string으로 page 번호를 주세요")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "memberId",description = "사용자의 id, path variable입니다."),
+            @Parameter(name="page",description = "페이지번호, 0번이 1페이지입니다.")
+    })
+    public ApiResponse<MissionResponseDto.MissionPreviewListDto> getChallengingMissionList(
+            @ExistMember @PathVariable(name="memberId") Long memberId,
+            @CheckPage @RequestParam(name="page") int page
+    ){
+        Page<Mission> missionPage=missionQueryService.getChallengingMissionList(memberId,page);
         return ApiResponse.onSuccess(MissionConverter.toMissionListDto(missionPage));
     }
 }

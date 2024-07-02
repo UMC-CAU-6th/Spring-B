@@ -47,8 +47,17 @@ public class MissionResponseDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class MissionPreview{
+        Long missionId;
         String storeName;
         Long reward;
         Long minimumPrice;
+    }
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class CompleteMissionResponseDto {
+        Long missionId;
+        LocalDateTime updatedAt;
     }
 }

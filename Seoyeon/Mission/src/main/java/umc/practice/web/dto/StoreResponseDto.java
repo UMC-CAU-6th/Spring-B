@@ -45,6 +45,7 @@ public class StoreResponseDto {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class ReviewPreview{
+        Long reviewId;
         String writerName;
         int stars;
         String content;

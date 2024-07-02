@@ -38,6 +38,7 @@ public class MissionConverter {
     }
     public static MissionResponseDto.MissionPreview toMissionPreview(Mission mission){
         return MissionResponseDto.MissionPreview.builder()
+                .missionId(mission.getId())
                 .storeName(mission.getStore().getStoreName())
                 .reward(mission.getReward())
                 .minimumPrice(mission.getMinimumPrice())
