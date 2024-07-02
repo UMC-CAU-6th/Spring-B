@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.domain.Review;
 import umc.study.domain.Store;
+import umc.study.repository.MemberRepository;
 import umc.study.repository.ReviewRepository;
 import umc.study.repository.StoreRepository;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,13 +18,8 @@ import java.util.Optional;
 public class StoreQueryServiceImpl implements StoreQueryService{
 
     private final StoreRepository storeRepository;
-
+    private final MemberRepository memberRepository;
     private final ReviewRepository reviewRepository;
-
-    @Override
-    public Optional<Store> findStore(Long id) {
-        return storeRepository.findById(id);
-    }
 
     @Override
     public Page<Review> getReviewList(Long StoreId, Integer page) {
@@ -33,5 +28,12 @@ public class StoreQueryServiceImpl implements StoreQueryService{
 
         Page<Review> StorePage = reviewRepository.findAllByStore(store, PageRequest.of(page, 10));
         return StorePage;
+    }
+
+    @Override
+    public Page<Review> getReviewList(String nickname, Integer page) {
+        Long memberId = memberRepository.findByName(nickname).getId();
+        Page<Review> reviewPage = reviewRepository.findAllByMemberId(memberId, PageRequest.of(page, 10));
+        return reviewPage;
     }
 }
