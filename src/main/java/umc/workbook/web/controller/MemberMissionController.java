@@ -48,7 +48,7 @@ public class MemberMissionController {
 
     // 특정 멤버가 진행중인 미션 목록 조회
     @GetMapping("/{memberId}/missions")
-    @Operation(summary = "멤버별 잔행중인 미션 목록 조회", description = "특정 멤버가 진행중인 미션 목록을 조회합니다.")
+    @Operation(summary = "멤버별 진행중인 미션 목록 조회", description = "특정 멤버가 진행중인 미션 목록을 조회합니다.")
     public ApiResponse<MemberMissionResponseDTO.MemberMissionPreviewListDTO> getMemberMissionList(
             @PathVariable(name = "memberId") Long memberId,
             @RequestParam(name = "page") Integer page,
