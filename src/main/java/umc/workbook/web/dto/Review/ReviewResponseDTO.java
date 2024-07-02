@@ -24,6 +24,6 @@ public class ReviewResponseDTO {
     @AllArgsConstructor
     public static class ReviewDTO {
         Long reviewId;
-        String content;
+        String review;
     }
 }

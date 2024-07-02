@@ -13,7 +13,7 @@ public class ReviewRequestDTO {
     @NoArgsConstructor
     public static class CreateReviewRequestDTO {
         private Long storeId;
-        private String content;
+        private String review;
         private Float score;
     }
 
