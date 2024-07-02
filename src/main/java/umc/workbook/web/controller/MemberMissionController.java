@@ -32,7 +32,7 @@ public class MemberMissionController {
     private final MemberMissionCommandService memberMissionCommandService;
     private final MemberMissionQueryService memberMissionQueryService;
 
-    // 수행중인 미션에 미션 추가
+    // 수행중인 미션 목록에 미션 추가
     @PostMapping("/missions")
     @Operation(summary = "도전 미션 목록에 미션 추가 API", description = "도전중인 미션 목록에 미션을 추가합니다.")
     public ApiResponse<MemberMissionResponseDTO.CreateMemberMissionResultDTO> createMemberMission(
