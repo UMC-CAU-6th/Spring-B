@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.domain.Mission;
 import umc.study.domain.Store;
+import umc.study.domain.mapping.MemberMission;
+import umc.study.repository.MemberMissionRepository;
 import umc.study.repository.MemberRepository;
 import umc.study.repository.MissionRepository;
 import umc.study.repository.StoreRepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +22,7 @@ import umc.study.repository.StoreRepository;
 public class MissionQueryServicelmpl implements MissionQueryService {
 
     private final MissionRepository missionRepository;
+    private final MemberMissionRepository memberMissionRepository;
     private final MemberRepository memberRepository;
     private final StoreRepository storeRepository;
 
@@ -31,7 +36,9 @@ public class MissionQueryServicelmpl implements MissionQueryService {
     @Override
     public Page<Mission> getMissionList(String nickname, Integer page) {
         Long memberId = memberRepository.findByName(nickname).getId();
+        Page<MemberMission> memberPage = memberMissionRepository.findAllByMemberId(memberId, PageRequest.of(page, 10));
 
-        return null;
+        Page<Mission> missionPage = memberPage.map(MemberMission::getMission);
+        return missionPage;
     }
 }
