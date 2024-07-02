@@ -16,5 +16,8 @@ public class MemberMissionRequestDTO {
     public static class CreateMemberMissionRequestDTO {
         private Long memberId;
         private Long missionId;
+        private String missionSpec;
+        private Integer reward;
+        private LocalDate deadLine;
     }
 }
