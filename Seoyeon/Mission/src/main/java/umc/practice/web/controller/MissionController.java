@@ -20,7 +20,6 @@ import umc.practice.service.MissionQueryService;
 import umc.practice.validation.annotation.CheckPage;
 import umc.practice.validation.annotation.ExistMember;
 import umc.practice.validation.annotation.ExistStore;
-import umc.practice.validation.annotation.ExistsMemberMission;
 import umc.practice.web.dto.MissionRequestDto;
 import umc.practice.web.dto.MissionResponseDto;
 
@@ -34,7 +33,8 @@ public class MissionController {
     private final MissionQueryService missionQueryService;
 
     @PostMapping("/store")
-    public ApiResponse<MissionResponseDto.AddMissionResponseDto> addMission(@RequestBody @Valid MissionRequestDto.AddMissionRequestDto requestDto) {
+    public ApiResponse<MissionResponseDto.AddMissionResponseDto> addMission(
+            @RequestBody @Valid MissionRequestDto.AddMissionRequestDto requestDto) {
         Mission mission=missionCommandService.addMission(requestDto);
         return ApiResponse.onSuccess(MissionConverter.toMissionResponseDto(mission));
     }
@@ -82,5 +82,19 @@ public class MissionController {
     ){
         Page<Mission> missionPage=missionQueryService.getChallengingMissionList(memberId,page);
         return ApiResponse.onSuccess(MissionConverter.toMissionListDto(missionPage));
+    }
+    @PatchMapping("/member/complete")
+    @Operation(summary = "진행중인 미션을 완료 상태로 변경")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    public ApiResponse<MissionResponseDto.CompleteMissionResponseDto> completeMission(
+            @RequestBody @Valid MissionRequestDto.CompleteMissionRequestDto requestDto
+    ){
+        MemberMission memberMission=missionCommandService.completeMission(requestDto);
+        return ApiResponse.onSuccess(MissionConverter.toCompleteMissionResponseDto(memberMission));
     }
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.practice.domain.enums.MissionStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -58,6 +59,7 @@ public class MissionResponseDto {
     @NoArgsConstructor
     public static class CompleteMissionResponseDto {
         Long missionId;
+        MissionStatus missionStatus;
         LocalDateTime updatedAt;
     }
 }

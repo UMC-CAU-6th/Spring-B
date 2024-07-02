@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.practice.domain.Mission;
 import umc.practice.domain.Member;
 import umc.practice.domain.common.BaseEntity;
@@ -15,6 +17,8 @@ import umc.practice.domain.enums.MissionStatus;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class MemberMission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,5 +49,8 @@ public class MemberMission extends BaseEntity {
         this.mission=mission;
         if(mission!=null)
             mission.getMemberMissionList().add(this);
+    }
+    public void changeStatus(MissionStatus status) {
+        this.status=status;
     }
 }

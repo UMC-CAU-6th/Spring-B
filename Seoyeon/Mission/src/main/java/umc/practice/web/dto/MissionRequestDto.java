@@ -1,11 +1,9 @@
 package umc.practice.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
-import org.springframework.format.annotation.DateTimeFormat;
 import umc.practice.validation.annotation.*;
 
 import java.time.LocalDate;
@@ -39,7 +37,7 @@ public class MissionRequestDto {
     public static class DoMissionRequestDto{
         @NotNull
         @Valid
-        @ExistsMemberMission
+        @NotExistsMemberMission
         private MemberMissionDto memberMission;
     }
     @Getter
@@ -50,5 +48,21 @@ public class MissionRequestDto {
         @ExistMission
         @NotNull
         private Long missionId;
+    }
+    @Getter
+    public static class CompleteMissionRequestDto{
+        @NotNull
+        @Valid
+        @ExistsMemberMission
+        CompleteMemberMissionDto completeMemberMission;
+    }
+    @Getter
+    public static class CompleteMemberMissionDto{
+        @ExistMember
+        @NotNull
+        Long memberId;
+        @ExistMission
+        @NotNull
+        Long missionId;
     }
 }

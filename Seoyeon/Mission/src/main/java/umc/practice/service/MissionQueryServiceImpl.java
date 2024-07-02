@@ -12,6 +12,7 @@ import umc.practice.domain.Mission;
 import umc.practice.domain.Store;
 import umc.practice.domain.enums.MissionStatus;
 import umc.practice.domain.mapping.MemberMission;
+import umc.practice.repository.MemberMissionRepository;
 import umc.practice.repository.MemberRepository;
 import umc.practice.repository.MissionRepository;
 
@@ -25,6 +26,7 @@ public class MissionQueryServiceImpl implements MissionQueryService{
     private final MissionRepository missionRepository;
     private final StoreQueryService storeQueryService;
     private final MemberRepository memberRepository;
+    private final MemberMissionRepository memberMissionRepository;
 
     @Override
     public Page<Mission> getMissionList(Long storeId, int page) {
@@ -48,5 +50,10 @@ public class MissionQueryServiceImpl implements MissionQueryService{
         List<Mission> missionSubList=missionList.subList(start,end);
 
         return new PageImpl<>(missionSubList,pageRequest,missionList.size());
+    }
+
+    @Override
+    public boolean existMemberMission(Long memberId, Long missionId) {
+        return memberMissionRepository.existsByMissionIdAndMemberId(missionId,memberId);
     }
 }

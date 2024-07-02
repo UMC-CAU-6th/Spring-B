@@ -24,7 +24,7 @@ public class MissionConverter {
                 .createdAt(mission.getCreatedAt())
                 .build();
     }
-    public static MemberMission toMemberMission(){
+    public static MemberMission toNewMemberMission(){
         return MemberMission.builder()
                 .status(MissionStatus.CHALLENGING)
                 .build();
@@ -56,6 +56,13 @@ public class MissionConverter {
                 .isLast(missionList.isLast())
                 .totalPage(missionList.getTotalPages())
                 .totalElement(missionList.getTotalElements())
+                .build();
+    }
+    public static MissionResponseDto.CompleteMissionResponseDto toCompleteMissionResponseDto(MemberMission memberMission){
+        return MissionResponseDto.CompleteMissionResponseDto.builder()
+                .missionId(memberMission.getMission().getId())
+                .missionStatus(memberMission.getStatus())
+                .updatedAt(memberMission.getUpdatedAt())
                 .build();
     }
 
