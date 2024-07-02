@@ -9,13 +9,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc.workbook.apiPayload.ApiResponse;
 import umc.workbook.apiPayload.code.status.SuccessStatus;
+import umc.workbook.converter.MissionConverter;
 import umc.workbook.converter.ReviewConverter;
 import umc.workbook.converter.StoreConverter;
+import umc.workbook.domain.entity.Mission;
 import umc.workbook.domain.entity.Review;
 import umc.workbook.domain.entity.Store;
 import umc.workbook.service.ReviewService.ReviewQueryService;
 import umc.workbook.service.StoreService.StoreCommandService;
 import umc.workbook.service.StoreService.StoreQueryService;
+import umc.workbook.web.dto.Mission.MissionResponseDTO;
 import umc.workbook.web.dto.Review.ReviewResponseDTO;
 import umc.workbook.web.dto.Store.StoreRequestDTO;
 import umc.workbook.web.dto.Store.StoreResponseDTO;
@@ -60,7 +63,22 @@ public class StoreController {
         return ApiResponse.onSuccess(
                 SuccessStatus.Review_OK,
                 reviewPreviewListDTO);
+    }
 
+    // 가게 미션 목록 조회
+    @GetMapping("/{storeId}/missions")
+    @Operation(summary = "가게 미션 목록 조회", description = "특정 가게의 미션 목록을 조회합니다.")
+    public ApiResponse<MissionResponseDTO.MissionPreviewListDTO> getMissionList(
+            //@ExistStore
+            @PathVariable(name = "storeId") Long storeId,
+            @RequestParam(name = "page") Integer page,
+            @RequestParam(name = "size", defaultValue = "10") Integer size
+    ) {
+        Page<Mission> missionPage = storeQueryService.getMissionList(storeId, page, size);
+        MissionResponseDTO.MissionPreviewListDTO missionPreviewListDTO = MissionConverter.missionPreviewListDTO(missionPage);
+        return ApiResponse.onSuccess(
+                SuccessStatus.Mission_OK,
+                missionPreviewListDTO);
     }
 
 }
