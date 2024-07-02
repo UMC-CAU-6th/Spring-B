@@ -5,6 +5,7 @@ import com.example.umc.mission.converter.MemberConverter;
 import com.example.umc.mission.converter.ReviewConverter;
 import com.example.umc.mission.domain.Member;
 import com.example.umc.mission.domain.Review;
+import com.example.umc.mission.domain.mapping.MembersMission;
 import com.example.umc.mission.service.MemberService.MemberCommandService;
 import com.example.umc.mission.service.MemberService.MemberQueryService;
 import com.example.umc.mission.validation.annotation.CheckPage;
@@ -54,5 +55,22 @@ public class MemberRestController {
     public ApiResponse<MemberResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistMember @PathVariable(name = "memberId") Long memberId, @CheckPage @RequestParam(name = "page") Integer page){
         Page<Review> reviews = memberQueryService.getReviewList(memberId, page-1);
         return ApiResponse.onSucccess(ReviewConverter.toMemberReviewListDTO(reviews));
+    }
+
+    //진행 중인 미션 조회
+    @GetMapping("/{memberId}/missions/challenge")
+    @Operation(summary = "특정 멤버의 진행 중인 미션목록 조회 API", description = "특정 멤버의 진행 중인 미션목록을 조회하는 API이며, 페이징을 포함합니다. queryString으로 page 번호를 주세요")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "memberId", description = "멤버의 아이디, path variable")
+    })
+    public ApiResponse<MemberResponseDTO.MissionPreViewListDTO> getChallengingMissionList(@ExistMember @PathVariable(name = "memberId") Long memberId, @CheckPage @RequestParam(name = "page") Integer page){
+        Page<MembersMission> challengingMissions = memberQueryService.getChallengingMissionList(memberId, page-1);
+        return ApiResponse.onSucccess(MemberConverter.toMissionPreReviewListDTO(challengingMissions));
     }
 }
