@@ -1,10 +1,7 @@
 package umc.workbook.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import umc.workbook.domain.common.BaseEntity;
 
 import java.util.ArrayList;
@@ -12,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Store extends BaseEntity {
@@ -33,13 +31,17 @@ public class Store extends BaseEntity {
 
     //private Float score;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();
 
     // created_at, updated_at은 BaseEntity에 있음
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
 
 }

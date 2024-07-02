@@ -22,7 +22,7 @@ import umc.workbook.web.dto.Review.ReviewResponseDTO;
 @Slf4j
 public class ReviewController {
 
-    private  final ReviewCommandService reviewCommandService;
+    private final ReviewCommandService reviewCommandService;
 
     // 가게에 리뷰 생성
     @PostMapping("/")
