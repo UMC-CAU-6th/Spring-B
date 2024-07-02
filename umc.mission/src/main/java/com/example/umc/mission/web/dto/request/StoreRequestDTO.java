@@ -1,6 +1,8 @@
 package com.example.umc.mission.web.dto.request;
 
+import com.example.umc.mission.validation.annotation.CheckMissionStatus;
 import com.example.umc.mission.validation.annotation.ExistMember;
+import com.example.umc.mission.validation.annotation.ExistMission;
 import com.example.umc.mission.validation.annotation.ExistStore;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -34,5 +36,13 @@ public class StoreRequestDTO {
         Long userId;
         @ExistStore
         Long storeId;
+    }
+
+    @Getter
+    public static class postChallengeDTO{
+        @ExistMember
+        Long memberId;
+        @ExistMission
+        Long missionId;
     }
 }

@@ -2,8 +2,7 @@ package com.example.umc.mission.service.StoreService;
 
 import com.example.umc.mission.domain.Review;
 import com.example.umc.mission.domain.Store;
-import com.example.umc.mission.repository.ReviewRepository;
-import com.example.umc.mission.repository.StoreRepository;
+import com.example.umc.mission.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

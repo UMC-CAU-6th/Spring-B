@@ -32,19 +32,11 @@ public class Mission {
     @Column(nullable = false)
     private Integer reward;
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'INCOMPLETE'")
-    private MissionStatus status;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
 
     @OneToMany(mappedBy = "mission")
     private List<MembersMission> membersMissionList = new ArrayList<>();
-
-    public void changeStatusToChallenging(){
-        this.status=MissionStatus.CHALLENGING;
-    }
 
 }

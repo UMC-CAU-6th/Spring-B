@@ -7,6 +7,7 @@ import com.example.umc.mission.converter.StoreConverter;
 import com.example.umc.mission.domain.Mission;
 import com.example.umc.mission.domain.Review;
 import com.example.umc.mission.domain.Store;
+import com.example.umc.mission.domain.mapping.MembersMission;
 import com.example.umc.mission.service.MissionService.MissionCommandService;
 import com.example.umc.mission.service.MissionService.MissionQueryService;
 import com.example.umc.mission.service.ReviewService.ReviewCommandService;
@@ -14,6 +15,7 @@ import com.example.umc.mission.service.StoreService.StoreCommandService;
 import com.example.umc.mission.service.StoreService.StoreQueryService;
 import com.example.umc.mission.validation.annotation.CheckMissionStatus;
 import com.example.umc.mission.validation.annotation.CheckPage;
+import com.example.umc.mission.validation.annotation.ExistMember;
 import com.example.umc.mission.validation.annotation.ExistStore;
 import com.example.umc.mission.web.dto.request.MissionRequestDTO;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
@@ -104,9 +106,9 @@ public class StoreRestController {
     }
 
     //4) 가게의 미션을 도전 중인 미션에 추가
-    @PutMapping("/{missionId}/challenge")
-    public ApiResponse<MissionResponseDTO.updateMissionResponseDTO> challengeMission(@CheckMissionStatus @PathVariable(name = "missionId") Long missionId){
-        Mission changedMission = missionCommandService.changeStatusOfMission(missionId);
-        return ApiResponse.onSucccess(MissionConverter.toUpdateMissionResponseDTO(changedMission));
+    @PostMapping("/challenge")
+    public ApiResponse<StoreResponseDTO.ChallengeResponseDTO> challengeMission(@CheckMissionStatus @RequestBody @Valid StoreRequestDTO.postChallengeDTO request){
+        MembersMission challenge = missionCommandService.saveChallenge(request);
+        return ApiResponse.onSucccess(StoreConverter.toChallengeResponseDTO(challenge));
     }
 }
