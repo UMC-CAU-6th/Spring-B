@@ -22,7 +22,7 @@ public class ReviewRestController {
     @PostMapping("/")
     public ApiResponse<ReviewResponseDTO.ReviewJoinResultDTO> join(@RequestBody @Valid ReviewRequestDTO.ReviewJoinDto request) {
         Review review = reviewCommandService.joinReview(request);
-        return  ApiResponse.onSuccess(ReviewConverter.toJoinResultDTO(review));
+        return ApiResponse.onSuccess(ReviewConverter.toJoinResultDTO(review));
     }
 
 

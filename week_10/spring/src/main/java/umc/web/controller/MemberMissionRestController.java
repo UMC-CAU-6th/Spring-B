@@ -29,7 +29,7 @@ public class MemberMissionRestController {
     @PostMapping("/")
     public ApiResponse<MemberMissionResponseDTO.MemberMissionJoinResultDTO> join(@RequestBody @Valid @isChallenging MemberMissionRequestDTO.MemberMissionJoinDto request) {
         MemberMission memberMission = memberMissionCommandService.joinMemberMission(request);
-        return  ApiResponse.onSuccess(MemberMissionConverter.toJoinResultDTO(memberMission));
+        return ApiResponse.onSuccess(MemberMissionConverter.toJoinResultDTO(memberMission));
     }
 
 
