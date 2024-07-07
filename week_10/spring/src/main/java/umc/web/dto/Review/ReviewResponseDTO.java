@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ReviewResponseDTO {
 
@@ -17,4 +19,5 @@ public class ReviewResponseDTO {
         Long reviewId;
         LocalDateTime createdAt;
     }
+
 }

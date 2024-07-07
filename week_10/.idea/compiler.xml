@@ -10,10 +10,5 @@
         <module name="spring.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="spring" target="21" />
-      <module name="spring.main" target="21" />
-      <module name="spring.test" target="21" />
-    </bytecodeTargetLevel>
   </component>
 </project>

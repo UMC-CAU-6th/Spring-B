@@ -12,4 +12,11 @@ public class StoreRequestDTO {
         @ExistRegions
         Long regionId;
     }
+
+    @Getter
+    public static class ReviewDTO {
+        String title;
+        Float score;
+        String body;
+    }
 }
