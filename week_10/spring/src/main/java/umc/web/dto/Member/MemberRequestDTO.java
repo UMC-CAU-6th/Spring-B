@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import umc.domain.enums.MissionStatus;
 import umc.validation.annotation.ExistCategories;
 
 import java.util.List;
@@ -36,4 +37,10 @@ public class MemberRequestDTO {
         Float score;
         String body;
     }
+
+    @Getter
+    public static class MemberMissionDTO {
+        MissionStatus status;
+    }
+
 }

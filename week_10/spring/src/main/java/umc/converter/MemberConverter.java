@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import umc.domain.Member;
 import umc.domain.Review;
 import umc.domain.enums.Gender;
+import umc.domain.mapping.MemberMission;
 import umc.web.dto.Member.MemberRequestDTO;
 import umc.web.dto.Member.MemberResponseDTO;
 
@@ -43,6 +44,41 @@ public class MemberConverter {
                 .gender(gender)
                 .name(request.getName())
                 .memberPreferList(new ArrayList<>())
+                .build();
+    }
+
+    public static MemberMission toMemberMission(MemberRequestDTO.MemberMissionDTO request) {
+        return MemberMission.builder()
+                .status(request.getStatus())
+                .build();
+    }
+
+    public static MemberResponseDTO.CreateMemberMissionResultDTO toCreateMemberMissionResultDTO(MemberMission memberMission){
+        return MemberResponseDTO.CreateMemberMissionResultDTO.builder()
+                .memberMissionId(memberMission.getId())
+                .createdAt(memberMission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static MemberResponseDTO.MemberMissionDTO memberMissionDTO(MemberMission memberMission){
+        return MemberResponseDTO.MemberMissionDTO.builder()
+                .status(memberMission.getStatus())
+                .createdAt(memberMission.getCreatedAt().toLocalDate())
+                .build();
+    }
+
+    public static MemberResponseDTO.MemberMissionListDTO memberMissionListDTO(Page<MemberMission> memberMissionList) {
+
+        List<MemberResponseDTO.MemberMissionDTO> memberMissionDTOList = memberMissionList.stream()
+                .map(MemberConverter::memberMissionDTO).collect(Collectors.toList());
+
+        return MemberResponseDTO.MemberMissionListDTO.builder()
+                .isLast(memberMissionList.isLast())
+                .isFirst(memberMissionList.isFirst())
+                .totalPage(memberMissionList.getTotalPages())
+                .totalElements(memberMissionList.getTotalElements())
+                .listSize(memberMissionDTOList.size())
+                .memberMissionList(memberMissionDTOList)
                 .build();
     }
 

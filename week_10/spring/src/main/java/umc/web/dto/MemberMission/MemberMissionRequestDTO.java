@@ -13,4 +13,5 @@ public class MemberMissionRequestDTO {
         Long memberId;
         Long missionId;
     }
+
 }

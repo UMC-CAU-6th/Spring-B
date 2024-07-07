@@ -51,8 +51,7 @@ public class MissionChallengingValidator implements ConstraintValidator<isChalle
             context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_NOT_FOUND.toString()).addConstraintViolation();
         }
         if(memberMission == null) {
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.MEMBER_MISSION_NOT_FOUND.toString()).addConstraintViolation();
+           return true;
         }
 
         if(!isExist) return false;

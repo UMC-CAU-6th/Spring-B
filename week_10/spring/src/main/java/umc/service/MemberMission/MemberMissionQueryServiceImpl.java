@@ -2,6 +2,8 @@ package umc.service.MemberMission;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.apiPayload.code.status.ErrorStatus;
@@ -9,6 +11,8 @@ import umc.apiPayload.exception.handler.MemberHandler;
 import umc.apiPayload.exception.handler.MissionHandler;
 import umc.domain.Member;
 import umc.domain.Mission;
+import umc.domain.enums.MissionStatus;
+import umc.domain.mapping.MemberMission;
 import umc.repository.MemberMissionRepository;
 import umc.repository.MemberRepository;
 import umc.repository.MissionRepository;
@@ -40,4 +44,5 @@ public class MemberMissionQueryServiceImpl implements MemberMissionQueryService 
 
         return memberMissionRepository.existsByMissionAndMember(newMission, newMember);
     }
+
 }
