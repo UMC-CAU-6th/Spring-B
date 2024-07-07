@@ -1,6 +1,7 @@
 package umc.converter;
 
 import org.springframework.data.domain.Page;
+import umc.domain.Mission;
 import umc.domain.Region;
 import umc.domain.Review;
 import umc.domain.Store;
@@ -65,6 +66,45 @@ public class StoreConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreviewDTOList.size())
                 .reviewList(reviewPreviewDTOList)
+                .build();
+    }
+
+    public static Mission toMission(StoreRequestDTO.MissionDTO request) {
+        return Mission.builder()
+                .reward(request.getReward())
+                .missionSpec(request.getMissionSpec())
+                .deadline(request.getDeadline())
+                .build();
+    }
+
+    public static StoreResponseDTO.CreateMissionResultDTO toCreateMissionResultDTO(Mission mission) {
+        return StoreResponseDTO.CreateMissionResultDTO.builder()
+                .missionId(mission.getId())
+                .createdAt(LocalDate.now())
+                .build();
+    }
+
+    public static StoreResponseDTO.MissionDTO missionDTO(Mission mission) {
+        return StoreResponseDTO.MissionDTO.builder()
+                .storeName(mission.getStore().getName())
+                .missionSpec(mission.getMissionSpec())
+                .createdAt(mission.getCreatedAt().toLocalDate())
+                .reward(mission.getReward())
+                .deadline(mission.getDeadline())
+                .build();
+    }
+
+    public static StoreResponseDTO.MissionListDTO missionListDTO(Page<Mission> missionList) {
+        List<StoreResponseDTO.MissionDTO> missionDTOList = missionList.stream()
+                .map(StoreConverter::missionDTO).collect(Collectors.toList());
+
+        return StoreResponseDTO.MissionListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionDTOList.size())
+                .missionList(missionDTOList)
                 .build();
     }
 
