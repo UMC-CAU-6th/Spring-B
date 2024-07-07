@@ -47,7 +47,7 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
                 () -> new MissionHandler(ErrorStatus.MISSION_NOT_FOUND)
         );
 
-        @isChallenging MemberMission newMemberMission = MemberMissionConverter.toMemberMission(request, newMember, newMission);
+        MemberMission newMemberMission = MemberMissionConverter.toMemberMission(request, newMember, newMission);
 
         return memberMissionRepository.save(newMemberMission);
 

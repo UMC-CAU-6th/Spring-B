@@ -18,6 +18,7 @@ public class MemberMissionConverter {
         return MemberMissionResponseDTO.MemberMissionJoinResultDTO.builder()
                 .memberMissionId(memberMission.getId())
                 .createdAt(LocalDateTime.now())
+                .status(memberMission.getStatus())
                 .build();
     }
 
@@ -26,7 +27,6 @@ public class MemberMissionConverter {
         return MemberMission.builder()
                 .member(member)
                 .mission(mission)
-                .status(request.getStatus())
                 .build();
     }
 }

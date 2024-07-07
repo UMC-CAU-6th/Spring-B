@@ -7,4 +7,6 @@ import umc.domain.mapping.MemberMission;
 
 public interface MemberMissionRepository extends JpaRepository<MemberMission, Long> {
     MemberMission findByMemberAndMission(Member member, Mission mission);
+    boolean existsByMissionAndMember(Mission mission, Member member);
+
 }

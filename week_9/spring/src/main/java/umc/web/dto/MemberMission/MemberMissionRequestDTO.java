@@ -8,9 +8,9 @@ import umc.validation.annotation.isChallenging;
 public class MemberMissionRequestDTO {
 
     @Getter
+    @isChallenging
     public static class MemberMissionJoinDto{
         Long memberId;
         Long missionId;
-        MissionStatus status;
     }
 }

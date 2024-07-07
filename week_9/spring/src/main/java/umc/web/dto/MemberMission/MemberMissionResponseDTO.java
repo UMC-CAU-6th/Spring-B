@@ -17,5 +17,6 @@ public class MemberMissionResponseDTO {
     public static class MemberMissionJoinResultDTO{
         Long memberMissionId;
         LocalDateTime createdAt;
+        MissionStatus status;
     }
 }
