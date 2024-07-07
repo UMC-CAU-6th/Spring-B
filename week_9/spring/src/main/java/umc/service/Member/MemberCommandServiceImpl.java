@@ -1,6 +1,7 @@
 package umc.service.Member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.apiPayload.code.status.ErrorStatus;
@@ -22,8 +23,10 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class MemberCommandServiceImpl implements MemberCommandService{
 
+    @Autowired
     private final MemberRepository memberRepository;
 
+    @Autowired
     private final FoodCategoryRepository foodCategoryRepository;
 
     @Override

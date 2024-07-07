@@ -18,12 +18,13 @@ import umc.repository.MemberMissionRepository;
 import umc.repository.MemberRepository;
 import umc.repository.MissionRepository;
 import umc.repository.StoreRepository;
+import umc.validation.annotation.isChallenging;
 import umc.web.dto.MemberMission.MemberMissionRequestDTO;
 import umc.web.dto.Mission.MissionRequestDTO;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class MemberMissionCommandServiceImpl implements MemberMissionCommandService {
 
     @Autowired
@@ -35,8 +36,7 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
     @Autowired
     private MemberRepository memberRepository;
 
-    @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public MemberMission joinMemberMission(MemberMissionRequestDTO.MemberMissionJoinDto request) {
 
         Member newMember = memberRepository.findById(request.getMemberId()).orElseThrow(
@@ -47,7 +47,7 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
                 () -> new MissionHandler(ErrorStatus.MISSION_NOT_FOUND)
         );
 
-        MemberMission newMemberMission = MemberMissionConverter.toMemberMission(request, newMember, newMission);
+        @isChallenging MemberMission newMemberMission = MemberMissionConverter.toMemberMission(request, newMember, newMission);
 
         return memberMissionRepository.save(newMemberMission);
 

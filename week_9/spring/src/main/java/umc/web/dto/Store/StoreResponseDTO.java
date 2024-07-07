@@ -1,21 +1,20 @@
-package umc.web.dto.MemberMission;
+package umc.web.dto.Store;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.domain.enums.MissionStatus;
 
 import java.time.LocalDateTime;
 
-public class MemberMissionResponseDTO {
+public class StoreResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class MemberMissionJoinResultDTO{
-        Long memberMissionId;
+    public static class StoreJoinResultDTO {
+        Long storeId;
         LocalDateTime createdAt;
     }
 }

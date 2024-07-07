@@ -36,7 +36,7 @@ public class MissionCommandServiceImpl implements MissionCommandService {
     private MemberRepository memberRepository;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Mission joinMission(MissionRequestDTO.MissionJoinDto request) {
 
         Store newStore = storeRepository.findById(request.getStoreId()).orElseThrow(

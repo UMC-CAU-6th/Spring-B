@@ -2,6 +2,8 @@ package umc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.domain.common.BaseEntity;
 
 import java.time.LocalDate;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Builder
+@DynamicUpdate
+@DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Mission extends BaseEntity {

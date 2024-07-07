@@ -1,7 +1,6 @@
 package umc.web.dto.Mission;
 
 import lombok.Getter;
-import umc.domain.enums.MissionStatus;
 import umc.validation.annotation.ExistStores;
 
 import java.time.LocalDate;
@@ -13,6 +12,7 @@ public class MissionRequestDTO {
         Integer reward;
         LocalDate deadline;
         String missionSpec;
+        @ExistStores
         Long storeId;
     }
 }

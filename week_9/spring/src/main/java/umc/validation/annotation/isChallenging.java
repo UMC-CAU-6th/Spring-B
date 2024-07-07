@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = MissionChallengingValidator.class)
-@Target( { ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
+@Target( {ElementType.LOCAL_VARIABLE, ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface isChallenging {
     String message() default "이미 도전 중인 미션입니다.";

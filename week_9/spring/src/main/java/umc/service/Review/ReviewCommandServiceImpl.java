@@ -16,9 +16,11 @@ import umc.repository.ReviewRepository;
 import umc.repository.StoreRepository;
 import umc.web.dto.Review.ReviewRequestDTO;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class ReviewCommandServiceImpl implements ReviewCommandService {
 
     @Autowired
@@ -31,7 +33,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
     private StoreRepository storeRepository;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public Review joinReview(ReviewRequestDTO.ReviewJoinDto request) {
 
         Member newMember = memberRepository.findById(request.getMemberId()).orElseThrow(
@@ -44,6 +46,15 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
 
         Review newReview = ReviewConverter.toReview(request, newMember, newStore);
 
-       return reviewRepository.save(newReview);
+        List<Review> reviews = reviewRepository.findByStore(newStore);
+        float sum = newReview.getScore();
+        for(Review review : reviews) {
+            sum += review.getScore();
+        }
+        float avgScore = sum / (reviews.size() + 1);
+
+        newStore.setScore(avgScore);
+
+        return reviewRepository.save(newReview);
     }
 }

@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class MemberMissionConverter {
 
-    public static MemberMissionResponseDTO.MemberMissionJoinResultDTO toJoinResultDTO(Member member){
+    public static MemberMissionResponseDTO.MemberMissionJoinResultDTO toJoinResultDTO(MemberMission memberMission){
         return MemberMissionResponseDTO.MemberMissionJoinResultDTO.builder()
-                .memberId(member.getId())
+                .memberMissionId(memberMission.getId())
                 .createdAt(LocalDateTime.now())
                 .build();
     }
@@ -24,9 +24,9 @@ public class MemberMissionConverter {
     public static MemberMission toMemberMission(MemberMissionRequestDTO.MemberMissionJoinDto request, Member member, Mission mission){
 
         return MemberMission.builder()
-                .status(request.getStatus())
                 .member(member)
                 .mission(mission)
+                .status(request.getStatus())
                 .build();
     }
 }
