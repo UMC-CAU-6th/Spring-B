@@ -29,4 +29,11 @@ public class MemberRequestDTO {
         @ExistCategories
         List<Long> preferCategory;
     }
+
+    @Getter
+    public static class ReviewDTO {
+        String title;
+        Float score;
+        String body;
+    }
 }
