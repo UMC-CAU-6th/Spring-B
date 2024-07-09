@@ -51,10 +51,8 @@ jobs:
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v20
         with:
-          #aws_access_key: ${{ secrets.AWS_ACTION_ACCESS_KEY_ID }}
-          #aws_secret_key: ${{ secrets.AWS_ACTION_SECRET_ACCESS_KEY }}
-          aws_access_key: AKIA6GBMBXNUT54Q7LRL
-          aws_secret_key: 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
+          aws_access_key: ${{ env.AWS_ACTION_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ env.AWS_ACTION_SECRET_ACCESS_KEY }}
           application_name: umc-workbook-beanstalk
           environment_name: Umc-workbook-beanstalk-env
           version_label: github-action-${{ steps.current-time.outputs.formattedTime }}
