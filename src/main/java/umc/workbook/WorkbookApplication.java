@@ -10,6 +10,7 @@ public class WorkbookApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WorkbookApplication.class, args);
+		System.out.println("[Initiate UMC workbook]");
 	}
 
 }
