@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6cfae6-ed9f-42a9-8de8-e403794443af" name="Changes" comment="conflict handled">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/workbook.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,20 +68,24 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="ci/68-wayne" />
+                    <option name="lastUsedInstant" value="1720527567" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="temp2" />
+                    <option name="lastUsedInstant" value="1720527275" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="temp" />
+                    <option name="lastUsedInstant" value="1720526956" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="feature/64" />
                     <option name="lastUsedInstant" value="1719935268" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/63" />
                     <option name="lastUsedInstant" value="1719934986" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/60" />
-                    <option name="lastUsedInstant" value="1719934972" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/49" />
-                    <option name="lastUsedInstant" value="1719933780" />
                   </RecentBranch>
                 </list>
               </option>
@@ -113,24 +112,33 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.workbook [:WorkbookApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/64&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/parkjh/Documents/UMC/wayne/workbook&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.workbook [:WorkbookApplication.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "ci/68-wayne",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/parkjh/Documents/UMC/wayne/workbook",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.platform/nginx" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="WorkbookApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="AWS_ACTION_ACCESS_KEY_ID" value="AKIA6GBMBXNUT54Q7LRL" />
+        <env name="AWS_ACTION_SECRET_ACCESS_KEY" value="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" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="umc.workbook.WorkbookApplication" />
       <module name="workbook.main" />
       <extension name="coverage">
@@ -138,6 +146,11 @@
           <option name="PATTERN" value="umc.workbook.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
