@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b6cfae6-ed9f-42a9-8de8-e403794443af" name="Changes" comment="conflict handled">
-      <change afterPath="$PROJECT_DIR$/src/main/java/umc/workbook/config/AmazonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/umc/workbook/domain/entity/Uuid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/umc/workbook/config/AmazonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/umc/workbook/config/AmazonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,8 +136,11 @@
   <component name="RunManager">
     <configuration name="WorkbookApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
-        <env name="AWS_ACTION_ACCESS_KEY_ID" value="AKIA6GBMBXNUT54Q7LRL" />
-        <env name="AWS_ACTION_SECRET_ACCESS_KEY" value="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" />
+        <env name="AWS_ACTION_ACCESS_KEY_ID" value="AKIA6GBMBXNU4CBHMZOC" />
+        <env name="AWS_ACTION_SECRET_ACCESS_KEY" value="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" />
+        <env name="AWS_DB_URL" value="jdbc:mysql://localhost:3306/workbook" />
+        <env name="AWS_DB_USER" value="root" />
+        <env name="AWS_DB_PASS" value="parkjh990308!" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="umc.workbook.WorkbookApplication" />
       <module name="workbook.main" />
@@ -147,6 +149,16 @@
           <option name="PATTERN" value="umc.workbook.*" />
           <option name="ENABLED" value="true" />
         </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
       </extension>
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />

@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,11 +18,14 @@ public class AmazonConfig {
 
     private AWSCredentials awsCredentials;
 
-    private String accessKey = "";
+    @Value("${cloud.aws.credentials.accessKey}")
+    private String accessKey;
 
-    private String secretKey = "";
+    @Value("${cloud.aws.credentials.secretKey}")
+    private String secretKey;
 
-    private String region = "ap-northeast-2";
+    @Value("${cloud.aws.region.static}")
+    private String region;
 
 
     @PostConstruct

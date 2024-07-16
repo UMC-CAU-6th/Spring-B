@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/workbook
-    username: root
-    password: parkjh990308!
+    url: ${AWS_DB_URL}
+    username: ${AWS_DB_USER}
+    password: ${AWS_DB_PASS}
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
@@ -17,3 +17,15 @@ spring:
         hbm2ddl:
           auto: update # update / create
         default_batch_fetch_size: 1000
+
+cloud:
+  aws:
+    s3:
+      bucket: umc-workbook
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY_ID}
+      secretKey: ${AWS_SECRET_ACCESS_KEY}
