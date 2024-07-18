@@ -3,7 +3,7 @@ package com.example.umc.mission.validation.annotation;
 import com.example.umc.mission.validation.validator.MemberExistValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import net.bytebuddy.build.RepeatedAnnotationPlugin;
+//import net.bytebuddy.build.RepeatedAnnotationPlugin;
 
 import java.lang.annotation.*;
 

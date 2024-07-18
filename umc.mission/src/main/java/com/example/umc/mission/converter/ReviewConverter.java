@@ -2,6 +2,7 @@ package com.example.umc.mission.converter;
 
 import com.example.umc.mission.domain.Member;
 import com.example.umc.mission.domain.Review;
+import com.example.umc.mission.domain.ReviewImage;
 import com.example.umc.mission.domain.Store;
 import com.example.umc.mission.web.dto.request.StoreRequestDTO;
 import com.example.umc.mission.web.dto.response.MemberResponseDTO;
@@ -75,6 +76,13 @@ public class ReviewConverter {
                 .starPoint(request.getStarPoint())
                 .store(store)
                 .member(member)
+                .build();
+    }
+
+    public static ReviewImage toReviewImage(String pictureUrl, Review review){
+        return ReviewImage.builder()
+                .review(review)
+                .pictureUrl(pictureUrl)
                 .build();
     }
 }
