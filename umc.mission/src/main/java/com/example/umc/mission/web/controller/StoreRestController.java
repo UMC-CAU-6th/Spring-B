@@ -32,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -57,9 +58,11 @@ public class StoreRestController {
     }
 
     //2) 가게에 리뷰 추가하기
-    @PostMapping("/review")
-    public ApiResponse<StoreResponseDTO.reviewResponseDTO> postReview(@RequestBody @Valid StoreRequestDTO.postReviewDTO request){
-        Review review = reviewCommandService.saveReview(request);
+    @PostMapping(value = "/review", consumes = "multipart/form-data")
+    public ApiResponse<StoreResponseDTO.reviewResponseDTO> postReview(
+            @Valid @RequestPart @Parameter(schema =@Schema(type = "string", format = "binary")) StoreRequestDTO.postReviewDTO request,
+            @RequestPart MultipartFile reviewPicture){
+        Review review = reviewCommandService.saveReview(request, reviewPicture);
         return ApiResponse.onSucccess(ReviewConverter.toReviewResponseDTO(review));
     }
 

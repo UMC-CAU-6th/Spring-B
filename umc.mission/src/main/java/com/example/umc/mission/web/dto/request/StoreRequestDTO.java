@@ -6,6 +6,7 @@ import com.example.umc.mission.validation.annotation.ExistMission;
 import com.example.umc.mission.validation.annotation.ExistStore;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 public class StoreRequestDTO {
 
