@@ -47,7 +47,18 @@ public class ReviewCommandServiceImpl implements ReviewCommandService{
 
         String pictureUrl = s3Manager.uploadFile(s3Manager.generateReviewKeyName(saveUuid), reviewPicture);
 
+
         reviewImageRepository.save(ReviewConverter.toReviewImage(pictureUrl,newReview));
         return reviewRepository.save(newReview);
+    }
+
+    public Long deleteReview(Long reviewId){
+
+        Review review = reviewRepository.findById(reviewId).orElseThrow(()->new StoreHandler(ErrorStatus.REVIEW_NOT_FOUND));
+        s3Manager.deleteImage(review.getReviewImage().getPictureUrl());
+
+        Long storeId = review.getStore().getId();
+        reviewRepository.delete(review);
+        return storeId;
     }
 }

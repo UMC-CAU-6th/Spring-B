@@ -85,4 +85,13 @@ public class StoreResponseDTO {
         Long memberId;
     }
 
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class DeleteReviewDTO{
+        Long storeId;
+        String text;
+    }
+
 }

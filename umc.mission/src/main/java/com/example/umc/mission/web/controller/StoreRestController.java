@@ -84,6 +84,22 @@ public class StoreRestController {
         //return null;
     }
 
+    //리뷰 삭제
+    @DeleteMapping("/{reviewId}/delete")
+    @Operation(summary = "특정 가게의 리뷰 삭제 API", description = "특정 리뷰를 삭제하는 API입니다. queryString 으로 reviewId를 주세요")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "reviewId", description = "삭제할 리뷰의 아이디, path variable")
+    })
+    public ApiResponse<StoreResponseDTO.DeleteReviewDTO> deleteReview(@PathVariable Long reviewId){
+        return ApiResponse.onSucccess(ReviewConverter.toDeleteReviewDTO(reviewCommandService.deleteReview(reviewId)));
+    }
+
     //3) 가게에 미션 추가하기
     @PostMapping("/mission")
     public ApiResponse<MissionResponseDTO.addMissionResponseDTO> postMission(@RequestBody @Valid MissionRequestDTO.addMissionDTO request){

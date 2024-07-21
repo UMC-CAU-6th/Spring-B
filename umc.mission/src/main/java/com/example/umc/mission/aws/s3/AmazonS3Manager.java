@@ -1,6 +1,8 @@
 package com.example.umc.mission.aws.s3;
 
+import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.example.umc.mission.config.AmazonConfig;
@@ -38,6 +40,17 @@ public class AmazonS3Manager {
         }catch (IOException e){
             log.error("error at AmazonS3Manager uploadFile : {}",(Object) e.getStackTrace());
         }
-        return null;
+        return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
+    }
+
+    public void deleteImage(String fileUrl){
+        try{
+            String splitStr = ".com/";
+            String fileName = fileUrl.substring(fileUrl.lastIndexOf(splitStr) + splitStr.length());
+            amazonS3.deleteObject(new DeleteObjectRequest(amazonConfig.getBucket(), fileName));
+        }
+        catch(SdkClientException e){
+            log.error("Error deleting file from s3");
+        }
     }
 }
