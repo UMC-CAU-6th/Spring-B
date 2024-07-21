@@ -85,4 +85,11 @@ public class ReviewConverter {
                 .pictureUrl(pictureUrl)
                 .build();
     }
+
+    public static StoreResponseDTO.DeleteReviewDTO toDeleteReviewDTO(Long storeId){
+        return StoreResponseDTO.DeleteReviewDTO.builder()
+                .storeId(storeId)
+                .text("해당 리뷰가 삭제되었습니다.")
+                .build();
+    }
 }

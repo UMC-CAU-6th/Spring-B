@@ -16,7 +16,7 @@ public class ReviewImage {
 
     private String pictureUrl;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "review_id")
     private Review review;
 }

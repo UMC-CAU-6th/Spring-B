@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -35,5 +38,7 @@ public class Review {
     @JoinColumn(name = "store_id")
     private Store store;
 
+    @OneToOne(mappedBy = "review",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private ReviewImage reviewImage;
 
 }

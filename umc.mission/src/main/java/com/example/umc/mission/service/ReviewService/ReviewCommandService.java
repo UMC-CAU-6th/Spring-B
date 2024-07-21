@@ -7,4 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ReviewCommandService {
 
     public Review saveReview(StoreRequestDTO.postReviewDTO request, MultipartFile reviewPicture);
+
+    public Long deleteReview(Long reviewId);
 }
